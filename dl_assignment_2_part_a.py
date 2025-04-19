@@ -168,7 +168,7 @@ def train_the_model(no_of_neurons, no_of_filters, size_of_filter, activation_fun
 
     train_loader, val_loader = data_loader_creator(augmentation_flag, batch_size)  # getting dataloaders
     # Uncomment the below line for test data loader
-    # test_loader = torch.utils.data.DataLoader(test_data,batch_size=batch_size,shuffle=True,num_workers=2,pin_memory=True)
+    # test_loader = torch.utils.data.DataLoader(test_dataset,batch_size=batch_size,shuffle=True,num_workers=2,pin_memory=True)
 
     model = CNN(no_of_input_channels, no_of_classes, no_of_filters, size_of_filter, no_of_neurons,
                 activation_function_name, dropout_probability, batch_normalization).to(device)
