@@ -1,5 +1,3 @@
-Here's the customized README.md for your code following the template structure:
-
 # Multi-Layer CNN for iNaturalist-12K Classification (Assignment 2 Part A)
 
 This implementation provides a **configurable convolutional neural network** in PyTorch for classifying images from the iNaturalist‑12K dataset (10 classes). The architecture and training parameters can be customized through command-line arguments.
@@ -47,7 +45,8 @@ Default path: `/kaggle/input/dataset2/inaturalist_12K`
 
 1. **Authenticate with W&B**:
 ```bash
-wandb login
+import wandb
+wandb.login(key="YOUR_WANDB_API_KEY")
 ```
 
 2. **Run training**:
@@ -56,8 +55,8 @@ python DA6401_Assignment_2_part_A.py \
   --root_dir /path/to/dataset \
   --wandb_project YOUR_PROJECT_NAME \
   --no_of_neurons 256 \
-  --no_of_filters "32,64,128,256,512" \
-  --size_of_filter "3,3,3,3,3" \
+  --no_of_filters "32,64,128,256,512" \  # Must provide exactly 5 values
+  --size_of_filter "3,3,5,5,3" \         # Must provide exactly 5 values
   --batch_size 64 \
   --no_of_epochs 10 \
   --learning_rate 1e-4 \
@@ -95,6 +94,14 @@ python DA6401_Assignment_2_part_A.py --help
 
 ---
 
+**📌 Note about filter parameters:**
+- Both `--no_of_filters` and `--size_of_filter` require exactly 5 comma-separated values
+- Example valid formats:
+  - `--no_of_filters "32,64,128,256,512"`
+  - `--size_of_filter "3,5,5,3,3"`
+- Filter counts typically increase across layers (e.g., 32→64→128...)
+- Kernel sizes are usually small odd numbers (3×3 being most common)
+
 ## 📖 Implementation Details
 
 ### Key Features:
@@ -128,8 +135,5 @@ python DA6401_Assignment_2_part_A.py --help
 1. For Kaggle runs, pre-authenticate W&B using API keys
 2. Default parameters reflect best-performing configuration
 3. Augmentation increases training time but improves generalization
-4. Filter organization modes:
-   - **0**: Constant filters per layer
-   - **1**: Increasing filters per layer
-
+4. 
 Adjust batch size based on available GPU memory. Larger batches (128) may require gradient accumulation for stability.
