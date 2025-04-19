@@ -1,7 +1,8 @@
 ```markdown
 # Fine-Tuning ResNet50 on iNaturalist-12K
 
-This script implements transfer learning using a pretrained ResNet50 model on the iNaturalist-12K dataset (10 classes) with PyTorch and Weights & Biases. Three different fine-tuning strategies are available.
+This script implements transfer learning using a pretrained ResNet50 model on the iNaturalist-12K dataset (10 classes) with PyTorch and Weights & Biases.
+Three different fine-tuning strategies are available.
 
 ---
 
